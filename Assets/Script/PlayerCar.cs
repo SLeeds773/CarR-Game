@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerCar : MonoBehaviour
 {
-    public int health=3;
     
     public Camera camera;
     public Animator animator;
@@ -24,6 +23,20 @@ public class PlayerCar : MonoBehaviour
 
     public Vector3 userDirection = Vector3.one;
 
+
+
+    public int maxHealth = 3;
+    public int Health;
+    public bool isInvincible;
+    public float iFrames;
+    public bool isAirborn;
+
+    void Start()
+    {
+        Health = maxHealth;
+    }
+
+
     public void Update()
     {
         time +=Time.deltaTime;
@@ -31,7 +44,7 @@ public class PlayerCar : MonoBehaviour
         if(InControl==false)
         {
             spinOutTime += Time.deltaTime;
-            print("No Control");
+            //print("No Control");
             if(spinOutTime >= spinOutTimeMarker)
             {
                 InControl=true;
@@ -62,7 +75,15 @@ public class PlayerCar : MonoBehaviour
         { 
             userDirection.x = movement.x;
         }
-       
+
+        if (isInvincible)
+        {
+            if(time >= iFrames)
+            {
+                isInvincible = false;
+            }
+        }
+
             
     }
        
@@ -96,13 +117,18 @@ public class PlayerCar : MonoBehaviour
         }
     }
 
-    /*public void SpinOut()
+
+    public void OnCollisionEnter2D(Collision2D other)
     {
-        InControl=false;
-        spinOutTime = time;
-        spinOutTimeMarker = spinOutTime+2f;
-        animator.Play("Spinout");
-    }*/
+        /*
+        if(other.GameObject.CompareTag("NPC") || other.GameObject.CompareTag("Wall") || other.GameObject.CompareTag("Obstacle"))
+        {
+            Health -= 1;
+            isInvincible = true;
+            iFrames += time;
+        }*/
+    }
+    
 
 
 }

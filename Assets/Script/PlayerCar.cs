@@ -33,8 +33,17 @@ public class PlayerCar : MonoBehaviour
     public float iFrames;
     public bool isAirborn;
 
+    public AudioSource musicIntro;
+    public AudioSource musicLoop;
+    public AudioSource vroom;
+
+    public float songtimer;
+    private float songCount = 7.35f;
+    private int song1Change = 0;
+
     void Start()
     {
+        musicIntro.Play();
         Health = maxHealth;
     }
 
@@ -49,16 +58,35 @@ public class PlayerCar : MonoBehaviour
             //print("No Control");
             if(spinOutTime >= spinOutTimeMarker)
             {
+                vroom.Play();
                 InControl=true;
                 spinOutTime=0;
                 spinOutTimeMarker=0;
             }
         }
 
+        if (songtimer >= songCount && song1Change == 0)
+        {
+
+            song1Change = 1;
+        }
+        else if (song1Change == 0 && songtimer < songCount)
+        {
+            songtimer += Time.deltaTime;
+        }
+
+        if (song1Change == 1)
+        {
+
+            musicIntro.Stop();
+            musicLoop.Play();
+            song1Change = 2;
+        }
+
         //print(InControl);
 
 
-        if(time >= 5f && gear == 0)
+        if (time >= 5f && gear == 0)
         {
             speedUp();
         }
@@ -115,6 +143,7 @@ public class PlayerCar : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Oil Spill"))
         {
+            vroom.Stop();
             InControl=false;
             spinOutTime = time;
             spinOutTimeMarker = spinOutTime+2f;

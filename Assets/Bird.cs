@@ -10,7 +10,7 @@ public class Bird : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(this.gameObject, 6f);
+        Destroy(this.gameObject, 10f);
     }
 
     // Update is called once per frame

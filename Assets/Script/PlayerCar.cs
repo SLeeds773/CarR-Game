@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerCar : MonoBehaviour
 {
+
+    public GameObject destroyer;
     
     public Camera camera;
     public Animator animator;
@@ -98,7 +100,9 @@ public class PlayerCar : MonoBehaviour
 
          //movespeed *= 2;
          movespeed += 5;
+         destroyer.SendMessage("SpeedUp", 5);
          gear++;
+
         
     }
 
@@ -107,6 +111,7 @@ public class PlayerCar : MonoBehaviour
         if (other.gameObject.CompareTag("PotHole"))
         {
             movespeed-=1;
+            destroyer.SendMessage("SlowDown", 1);
         }
         if (other.gameObject.CompareTag("Oil Spill"))
         {

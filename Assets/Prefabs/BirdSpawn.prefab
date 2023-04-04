@@ -103,3 +103,4 @@ MonoBehaviour:
   - {fileID: 5796432412092169577, guid: 0b6110ab07bb413428ff876a8fd4a5eb, type: 3}
   - {fileID: 5796432412092169577, guid: 0b6110ab07bb413428ff876a8fd4a5eb, type: 3}
   - {fileID: 8746496709309763975, guid: 567a697003eb44448b4440c96644375f, type: 3}
+  spawnNum: 5

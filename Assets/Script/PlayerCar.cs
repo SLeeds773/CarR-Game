@@ -7,7 +7,7 @@ public class PlayerCar : MonoBehaviour
 
     public GameObject destroyer;
     
-    public Camera camera;
+    public new Camera camera;
     public Animator animator;
     public Rigidbody2D rb;
     public Rigidbody2D Car;

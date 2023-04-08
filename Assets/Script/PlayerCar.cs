@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCar : MonoBehaviour
 {
-
+    public bool alive;
     public GameObject destroyer;
     
     public new Camera camera;
@@ -33,6 +33,8 @@ public class PlayerCar : MonoBehaviour
     public float iFrames;
     public bool isAirborn;
 
+    public float iFrameMarker;
+
     public AudioSource musicIntro;
     public AudioSource musicLoop;
     public AudioSource vroom;
@@ -43,14 +45,19 @@ public class PlayerCar : MonoBehaviour
 
     void Start()
     {
+        alive=true;
         musicIntro.Play();
         Health = maxHealth;
+        animator.SetFloat("Health", maxHealth);
     }
 
 
     public void Update()
     {
         time +=Time.deltaTime;
+        animator.SetFloat("Health", Health);
+
+        
 
         if(InControl==false)
         {
@@ -95,24 +102,21 @@ public class PlayerCar : MonoBehaviour
         }
 
         
-
+        if(alive == true)
+        {
         mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
 
         movement.x = Input.GetAxisRaw("Horizontal");
         transform.Translate(userDirection * movespeed * Time.deltaTime);
+        }
 
         if(InControl == true)
         { 
             userDirection.x = movement.x;
         }
-
-        if (isInvincible)
-        {
-            if(time >= iFrames)
-            {
-                isInvincible = false;
-            }
-        }
+          
+       
+        
 
             
     }
@@ -136,33 +140,50 @@ public class PlayerCar : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("PotHole"))
-        {
-            movespeed-=1;
-            destroyer.SendMessage("SlowDown", 1);
-        }
-        if (other.gameObject.CompareTag("Oil Spill"))
-        {
-            vroom.Stop();
-            InControl=false;
-            spinOutTime = time;
-            spinOutTimeMarker = spinOutTime+2f;
-            animator.Play("Spinout");
-        }
-    }
+            if (other.gameObject.CompareTag("PotHole"))
+            {
+                
+                movespeed-=1;
+                destroyer.SendMessage("SlowDown", 1);
+            }
+            if (other.gameObject.CompareTag("Oil Spill"))
+            { 
+                
+                    print("hit");
+                    vroom.Stop();
+                    InControl=false;
+                    spinOutTime = time;
+                    spinOutTimeMarker = spinOutTime+2f;
+                    animator.Play("Spinout");
+            }
+
+            if (other.gameObject.CompareTag("Car"))
+            {
+                
+                Health-=1;
+                print("ow");
+                if(Health==2)
+                {
+                    animator.Play("Driving hurt 1"); 
+                }
+                if(Health==1)
+                {
+                    animator.Play("Driving hurt 2"); 
+                }
+                if(Health<=0)
+                {
+                    alive = false;
+                }
+            }
+              
+    }   
+        
+    
 
 
-    public void OnCollisionEnter2D(Collision2D other)
-    {
-        /*
-        if(other.GameObject.CompareTag("NPC") || other.GameObject.CompareTag("Wall") || other.GameObject.CompareTag("Obstacle"))
-        {
-            Health -= 1;
-            isInvincible = true;
-            iFrames += time;
-        }*/
-    }
+   
     
 
 
 }
+

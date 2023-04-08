@@ -8,6 +8,7 @@ TagManager:
   - Obstacles
   - Oil Spill
   - Destroyer
+  - Car
   layers:
   - Default
   - TransparentFX

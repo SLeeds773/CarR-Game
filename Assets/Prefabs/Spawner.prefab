@@ -108,4 +108,14 @@ MonoBehaviour:
   - {fileID: 5796432412092169577, guid: 0b6110ab07bb413428ff876a8fd4a5eb, type: 3}
   - {fileID: 5796432412092169577, guid: 0b6110ab07bb413428ff876a8fd4a5eb, type: 3}
   - {fileID: 5796432412092169577, guid: 0b6110ab07bb413428ff876a8fd4a5eb, type: 3}
-  spawnNum: 10
+  - {fileID: 5796432412092169577, guid: 0b6110ab07bb413428ff876a8fd4a5eb, type: 3}
+  - {fileID: 5796432412092169577, guid: 0b6110ab07bb413428ff876a8fd4a5eb, type: 3}
+  - {fileID: 5796432412092169577, guid: 0b6110ab07bb413428ff876a8fd4a5eb, type: 3}
+  - {fileID: 5796432412092169577, guid: 0b6110ab07bb413428ff876a8fd4a5eb, type: 3}
+  - {fileID: 5796432412092169577, guid: 0b6110ab07bb413428ff876a8fd4a5eb, type: 3}
+  - {fileID: 5796432412092169577, guid: 0b6110ab07bb413428ff876a8fd4a5eb, type: 3}
+  - {fileID: 5796432412092169577, guid: 0b6110ab07bb413428ff876a8fd4a5eb, type: 3}
+  - {fileID: 5796432412092169577, guid: 0b6110ab07bb413428ff876a8fd4a5eb, type: 3}
+  - {fileID: 5796432412092169577, guid: 0b6110ab07bb413428ff876a8fd4a5eb, type: 3}
+  - {fileID: 5796432412092169577, guid: 0b6110ab07bb413428ff876a8fd4a5eb, type: 3}
+  spawnNum: 20

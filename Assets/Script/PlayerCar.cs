@@ -208,7 +208,8 @@ public class PlayerCar : MonoBehaviour
         {
         mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
 
-        movement.x = Input.GetAxisRaw("Horizontal");
+        //movement.x = Input.GetAxisRaw("Horizontal");
+        movement.x = Input.GetAxisRaw("Mouse Y");
         transform.Translate(userDirection * movespeed * Time.deltaTime);
         }
 

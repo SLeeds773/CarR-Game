@@ -27,6 +27,12 @@ public class NPCCar : MonoBehaviour
             {
                 Destroy(other.gameObject);
             }
+        if (other.CompareTag("Destroyer"))
+        {
+            Destroy(this.gameObject);
+
+        }
     }
-    
+
+
 }

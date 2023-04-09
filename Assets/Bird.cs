@@ -10,12 +10,22 @@ public class Bird : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(this.gameObject, 10f);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
          transform.Translate(userDirection * movespeed * Time.deltaTime);
+    }
+
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Destroyer"))
+        {
+            Destroy(this.gameObject);
+
+        }
     }
 }

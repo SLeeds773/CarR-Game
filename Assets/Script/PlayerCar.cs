@@ -19,6 +19,9 @@ public class PlayerCar : MonoBehaviour
     Vector3 movement;
 
     public float time;
+    public float gas;
+    //public float penalty;
+    public float gasPercent;
     public bool InControl;
     public float spinOutTime;
     public float spinOutTimeMarker;
@@ -27,13 +30,13 @@ public class PlayerCar : MonoBehaviour
 
 
 
-    public int maxHealth = 3;
+    public int maxHealth = 5;
     public int Health;
     public bool isInvincible;
     public float iFrames;
+    public float iFrameMarker;
     public bool isAirborn;
 
-    public float iFrameMarker;
 
     public AudioSource musicIntro;
     public AudioSource musicLoop;
@@ -42,6 +45,11 @@ public class PlayerCar : MonoBehaviour
     public float songtimer;
     private float songCount = 7.35f;
     private int song1Change = 0;
+
+
+    public GameObject smoke1;
+    public GameObject smoke2;
+    public GameObject fire;    
 
     void Start()
     {
@@ -55,9 +63,13 @@ public class PlayerCar : MonoBehaviour
     public void Update()
     {
         time +=Time.deltaTime;
-        animator.SetFloat("Health", Health);
+        //animator.SetFloat("Health", Health);
 
-        
+        //gas percent used for meter, getting hit lowers gas (adds to time)
+        //change all time to gas
+
+        gasPercent = gas / time;
+        print(gasPercent);
 
         if(InControl==false)
         {
@@ -69,6 +81,19 @@ public class PlayerCar : MonoBehaviour
                 InControl=true;
                 spinOutTime=0;
                 spinOutTimeMarker=0;
+                if(Health == 5)
+                {
+                    animator.Play("Driving");
+                }
+                if (Health <= 4)
+                {
+                    animator.Play("Driving hurt 1");
+
+                }
+                if (Health <= 2)
+                {
+                    animator.Play("Driving hurt 2");
+                }
             }
         }
 
@@ -93,11 +118,24 @@ public class PlayerCar : MonoBehaviour
         //print(InControl);
 
 
-        if (time >= 5f && gear == 0)
+        if (time >= 20f && gear == 0)
         {
             speedUp();
         }
-        if(time >= 10f && gear == 1){
+        if(time >= 40f && gear == 1){
+            speedUp();
+        }
+        if(time >= 60f && gear == 2)
+        {
+            speedUp();
+        }if(time >= 80f && gear == 3)
+        {
+            speedUp();
+        }if(time >= 100f && gear == 4)
+        {
+            speedUp();
+        }if(time >= 120f && gear == 5)
+        {
             speedUp();
         }
 
@@ -115,8 +153,43 @@ public class PlayerCar : MonoBehaviour
             userDirection.x = movement.x;
         }
           
-       
-        
+      
+
+
+        if (isInvincible)
+        {
+
+        }
+
+
+        if(time >= 160f && movespeed >= 60)
+        {
+            movespeed -= 10;
+        }
+        if(time >= 180f && movespeed >= 50)
+        {
+            movespeed -= 10;
+        }
+        if(time >= 180f && movespeed >= 40)
+        {
+            movespeed -= 10;
+        }
+        if(time >= 180f && movespeed >= 30)
+        {
+            movespeed -= 10;
+        }
+        if(time >= 180f && movespeed >= 20)
+        {
+            movespeed -= 10;
+        }
+        if(time >= 180f && movespeed >= 10)
+        {
+            movespeed -= 10;
+            if (alive)
+            {
+                //win
+            }
+        }
 
             
     }
@@ -132,19 +205,45 @@ public class PlayerCar : MonoBehaviour
 
          //movespeed *= 2;
          movespeed += 5;
-         destroyer.SendMessage("SpeedUp", 5);
+         //destroyer.SendMessage("SpeedUp", 5);
          gear++;
 
         
+    }
+
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Car"))
+        {
+
+            Health -= 1;
+            print("ow");
+            if (Health <= 4)
+            {
+                animator.Play("Driving hurt 1");
+                smoke1.SetActive(true);
+            }
+            if (Health <= 2)
+            {
+                animator.Play("Driving hurt 2");
+                //Instantiate(smoke2, this.transform);
+                smoke2.SetActive(true);
+            }
+            if (Health <= 0)
+            {
+                alive = false;
+                //Instantiate(fire, this.transform);
+                fire.SetActive(true);
+            }
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
             if (other.gameObject.CompareTag("PotHole"))
             {
-                
                 movespeed-=1;
-                destroyer.SendMessage("SlowDown", 1);
+                //destroyer.SendMessage("SlowDown", 1);
             }
             if (other.gameObject.CompareTag("Oil Spill"))
             { 
@@ -153,28 +252,11 @@ public class PlayerCar : MonoBehaviour
                     vroom.Stop();
                     InControl=false;
                     spinOutTime = time;
-                    spinOutTimeMarker = spinOutTime+2f;
+                    spinOutTimeMarker = spinOutTime+1f;
                     animator.Play("Spinout");
             }
 
-            if (other.gameObject.CompareTag("Car"))
-            {
-                
-                Health-=1;
-                print("ow");
-                if(Health==2)
-                {
-                    animator.Play("Driving hurt 1"); 
-                }
-                if(Health==1)
-                {
-                    animator.Play("Driving hurt 2"); 
-                }
-                if(Health<=0)
-                {
-                    alive = false;
-                }
-            }
+            
               
     }   
         

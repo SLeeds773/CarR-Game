@@ -7,6 +7,15 @@ using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
+    public int health;
+    public GameObject bolt1;
+    public GameObject bolt2;
+    public GameObject bolt3;
+    public GameObject bolt4;
+    public GameObject bolt5;
+    public GameObject bolt6;
+
+
     public TMP_Text txtscore;
     public double score;
     public Transform player;
@@ -47,6 +56,39 @@ public class GameUI : MonoBehaviour
     {
         gasPercent = percent;
     }
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    public void SetHealth()
+    {
+        health-=1;
+
+        if(health == 6)
+        {
+           Destroy(bolt6.gameObject);
+        }
+        if(health == 5)
+        {
+           Destroy(bolt5.gameObject);
+        }
+        if(health == 4)
+        {
+           Destroy(bolt4.gameObject);
+        }
+        if(health == 3)
+        {
+           Destroy(bolt3.gameObject);
+        }
+        if(health == 2)
+        {
+           Destroy(bolt2.gameObject);
+        }
+        if(health == 1)
+        {
+           Destroy(bolt1.gameObject);
+        }
+=======
+>>>>>>> Stashed changes
 
     public void WinText()
     {
@@ -58,5 +100,9 @@ public class GameUI : MonoBehaviour
     {
         loseScreen.SetActive(true);
         print("lose text");
+<<<<<<< Updated upstream
+=======
+>>>>>>> df590a9adf5fbcb03c81cffb9ac808aacf8d49e7
+>>>>>>> Stashed changes
     }
 }

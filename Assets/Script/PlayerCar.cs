@@ -325,6 +325,7 @@ public class PlayerCar : MonoBehaviour
             isInvincible = true;
             iFrameMarker = time + 1.5f;
             iFrames = time;
+             playerUI.SendMessage("SetHealth");
             if(movespeed > 15f)
             {
                 movespeed -= 5f;
@@ -362,9 +363,25 @@ public class PlayerCar : MonoBehaviour
                 gasTime += 5f;
                 movespeed -= 3f;
                 //destroyer.SendMessage("SlowDown", 1);
+                
             }
             if (other.gameObject.CompareTag("Oil Spill"))
             {
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+                    penalty += 5;
+                    gasTime += 5f;
+                    movespeed -= 2f;
+                    //print("hit");
+                    vroom.Stop();
+                    InControl=false;
+                    spinOutTime = time;
+                    spinOutTimeMarker = spinOutTime+1f;
+                    animator.Play("Spinout");
+                    
+=======
+>>>>>>> Stashed changes
                 penalty += 5;
                 gasTime += 5f;
                 movespeed -= 2f;
@@ -374,6 +391,10 @@ public class PlayerCar : MonoBehaviour
                 spinOutTime = time;
                 spinOutTimeMarker = spinOutTime + 1f;
                 animator.Play("Spinout");
+<<<<<<< Updated upstream
+=======
+>>>>>>> df590a9adf5fbcb03c81cffb9ac808aacf8d49e7
+>>>>>>> Stashed changes
             }
         }
            

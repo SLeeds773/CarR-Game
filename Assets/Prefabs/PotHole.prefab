@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 284322709063940779}
   - component: {fileID: 6718156502194468462}
+  - component: {fileID: 1661163119454160158}
   m_Layer: 0
   m_Name: PotHole
   m_TagString: PotHole
@@ -49,6 +50,18 @@ CircleCollider2D:
   m_Offset: {x: -0.09176755, y: 0.045841455}
   serializedVersion: 2
   m_Radius: 1.9239137
+--- !u!114 &1661163119454160158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4418176082422449542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d815a6f2c1f0e4148a4872ad51bea8c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7106987077727303728
 GameObject:
   m_ObjectHideFlags: 0

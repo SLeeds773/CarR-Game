@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Road : MonoBehaviour
+public class ToBeDeleted : MonoBehaviour
 {
-    public GameObject Placer;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,19 +16,19 @@ public class Road : MonoBehaviour
         
     }
 
+
     public void OnTriggerEnter2D(Collider2D other)
     {
-         if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Destroyer"))
         {
-          Placer.gameObject.SendMessage("Build");  
-          
+            print("should delete");
+            Destroy(this.gameObject);
         }
-         /*
-         if (other.gameObject.CompareTag("Destroyer"))
+        else
         {
-           
-          Destroy(this.gameObject, 2f);
+            print("wrong tag????");
+            print(other.tag);
+            print(other.gameObject.tag);
         }
-        */
     }
 }

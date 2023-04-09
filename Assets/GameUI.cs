@@ -29,7 +29,7 @@ public class GameUI : MonoBehaviour
         score = Math.Round(player.transform.position.y) - penalty;
         txtscore.text = "Score: "+ score.ToString();
         
-        print("ui percent = " + gasPercent);
+        //print("ui percent = " + gasPercent);
 
         gasMeter.fillAmount = gasPercent;
     }

@@ -12,7 +12,7 @@ public class PlayerCar : MonoBehaviour
     public Animator animator;
     public Rigidbody2D rb;
     public Rigidbody2D Car;
-    public int movespeed;
+    public float movespeed;
     Vector2 mousePos;
 
     public int gear = 0;
@@ -128,38 +128,79 @@ public class PlayerCar : MonoBehaviour
             song1Change = 2;
         }
 
-        
+
 
         /////////////////////////////
         ///Speed Up
         /////////////////////////////
+        
+        //Gear 1 speed cap: 15
         if (gasPercent > .05 && gear == 0)
         {
             speedUp();
         }
+        if(movespeed <= 15f && gear == 1)
+        {
+            movespeed += .01f;
+        }
+
+
+        //Gear 2 speed cap: 20
         if(gasPercent > .1 && gear == 1){
             speedUp();
         }
-        if(gasPercent > .15 && gear == 2)
+        if(movespeed < 20f && gear == 2)
         {
-            speedUp();
-        }if(gasPercent > .25 && gear == 3)
-        {
-            speedUp();
-        }if(gasPercent > .4 && gear == 4)
-        {
-            speedUp();
-        }if(gasPercent > .5 && gear == 5)
+            movespeed += .01f;
+        }
+
+        //Gear 3 speed cap: 25
+        if(gasPercent > .2 && gear == 2)
         {
             speedUp();
         }
+        if (movespeed < 25f && gear == 3)
+        {
+            movespeed += .01f;
+        }
 
+        //Gear 4 speed cap: 30
+        if (gasPercent > .45 && gear == 3)
+        {
+            speedUp();
+        }
+        if (movespeed < 30f && gear == 4)
+        {
+            movespeed += .02f;
+        }
+
+        //Gear 5 speed cap: 40
+        if (gasPercent > .7 && gear == 4)
+        {
+            speedUp();
+        }
+        if (movespeed < 40f && gear == 5)
+        {
+            movespeed += .03f;
+        }
         
+        //Gear 6 speed cap: 50
+        if (gasPercent > .85 && gear == 5)
+        {
+            speedUp();
+            //movespeed += 5;
+        }
+        if (movespeed < 50f && gear == 6)
+        {
+            movespeed += .04f;
+        }
+
+
         //////////////////////////////
         ///Movement enabler
         //////////////////////////////
 
-        if(alive == true)
+        if (alive == true)
         {
         mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
 
@@ -189,6 +230,8 @@ public class PlayerCar : MonoBehaviour
         /////////////////////////////
         ///Slow Down and Win
         /////////////////////////////
+        ///
+        /*
         if(gasPercent > .6 && movespeed >= 60)
         {
             movespeed -= 10;
@@ -209,14 +252,20 @@ public class PlayerCar : MonoBehaviour
         {
             movespeed -= 10;
         }
-        if(gasPercent > .99 && movespeed >= 10)
+        */
+        if(gasPercent > .99)
         {
             if(movespeed > 0)
             {
-                movespeed = 0;
-            }
-            if (alive)
+                movespeed -= .1f;
+            } else if(movespeed < 0)
             {
+                movespeed = 0f;
+            }
+            if (alive && movespeed == 0)
+            {
+                vroom.Stop();
+                print("win");
                 //win
             }
         }
@@ -251,7 +300,7 @@ public class PlayerCar : MonoBehaviour
     {
 
          //movespeed *= 2;
-         movespeed += 5;
+         movespeed += 1f;
          //destroyer.SendMessage("SpeedUp", 5);
          gear++;
 
@@ -269,9 +318,9 @@ public class PlayerCar : MonoBehaviour
             isInvincible = true;
             iFrameMarker = time + 1.5f;
             iFrames = time;
-            if(movespeed > 15)
+            if(movespeed > 15f)
             {
-                movespeed -= 5;
+                movespeed -= 5f;
             }
             if (Health <= 4)
             {
@@ -299,14 +348,14 @@ public class PlayerCar : MonoBehaviour
             {
                 penalty += 5;
                 gasTime += 5f;
-                movespeed-=3;
+                movespeed-=3f;
                 //destroyer.SendMessage("SlowDown", 1);
             }
             if (other.gameObject.CompareTag("Oil Spill"))
             {
                     penalty += 5;
                     gasTime += 5f;
-                    movespeed -= 2;
+                    movespeed -= 2f;
                     //print("hit");
                     vroom.Stop();
                     InControl=false;

@@ -612,6 +612,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8924180278284568182, guid: abd800bb6c91f424aaeda097d6ecbb45, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abd800bb6c91f424aaeda097d6ecbb45, type: 3}
 --- !u!1 &388827506 stripped
@@ -848,6 +852,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6090043136189277884, guid: abd800bb6c91f424aaeda097d6ecbb45, type: 3}
   m_PrefabInstance: {fileID: 323134639}
   m_PrefabAsset: {fileID: 0}
+--- !u!50 &705409098
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705409085}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &729764713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2780,7 +2805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 737695362, guid: 013a2416c0e3e7647ba957ba5e4b6243, type: 3}
       propertyPath: maxHealth
-      value: 30
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 737695362, guid: 013a2416c0e3e7647ba957ba5e4b6243, type: 3}
       propertyPath: movespeed

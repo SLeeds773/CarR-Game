@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1835470026924812621}
   - component: {fileID: 6617120304681242354}
   - component: {fileID: 3263390254914083144}
+  - component: {fileID: 2297349237231223310}
   m_Layer: 0
   m_Name: OIL spill
   m_TagString: Oil Spill
@@ -112,5 +113,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d2e94b6ae52afd42b5af2c42d91f152, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2297349237231223310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2368653154189611312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d815a6f2c1f0e4148a4872ad51bea8c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

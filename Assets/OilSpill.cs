@@ -22,9 +22,11 @@ public class OilSpill : MonoBehaviour
         {
            Destroy(this.gameObject);
         }
+        /*
         if(other.gameObject.CompareTag("Destroyer"))
         {
            Destroy(this.gameObject);
         }
+        */
     }
 }

@@ -18,14 +18,4 @@ public class Bird : MonoBehaviour
     {
          transform.Translate(userDirection * movespeed * Time.deltaTime);
     }
-
-
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Destroyer"))
-        {
-            Destroy(this.gameObject);
-
-        }
-    }
 }

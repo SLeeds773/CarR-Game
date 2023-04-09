@@ -66,6 +66,7 @@ GameObject:
   - component: {fileID: 9112683767456504614}
   - component: {fileID: 1451879640721150389}
   - component: {fileID: 415421797182133849}
+  - component: {fileID: 8175316502773590159}
   m_Layer: 0
   m_Name: Road Template
   m_TagString: Untagged
@@ -139,6 +140,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 33.95489, y: 10.886463}
   m_EdgeRadius: 0
+--- !u!114 &8175316502773590159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5697601201691382548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d815a6f2c1f0e4148a4872ad51bea8c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5463188053556313
 PrefabInstance:
   m_ObjectHideFlags: 0

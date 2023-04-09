@@ -15,7 +15,7 @@ public class Destroyer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        print(this.tag);
         userDirection.x = 0;
         speed = 10;
     }
@@ -51,7 +51,21 @@ public class Destroyer : MonoBehaviour
     void Update()
     {
 
-        this.gameObject.transform.position = playerLocation.transform.position - Vector3.one * 30f;
+        this.gameObject.transform.position = playerLocation.transform.position - Vector3.one * 50f;
 
     }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        print("trigger");
+        print(other.gameObject.tag);
+        print(other.gameObject);
+    }
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        print("Collision");
+        print(other.gameObject.tag);
+        print(other.gameObject);
+    }
+
 }

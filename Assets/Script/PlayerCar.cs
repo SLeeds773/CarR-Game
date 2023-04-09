@@ -51,7 +51,8 @@ public class PlayerCar : MonoBehaviour
 
     public GameObject smoke1;
     public GameObject smoke2;
-    public GameObject fire;    
+    public GameObject fire;
+
 
     void Start()
     {
@@ -59,11 +60,14 @@ public class PlayerCar : MonoBehaviour
         musicIntro.Play();
         Health = maxHealth;
         animator.SetFloat("Health", maxHealth);
+        
     }
 
 
     public void Update()
     {
+
+        playerUI.SendMessage("SetHealth", Health);
         time +=Time.deltaTime;
         gasTime += Time.deltaTime;
         //animator.SetFloat("Health", Health);
@@ -266,11 +270,16 @@ public class PlayerCar : MonoBehaviour
             {
                 vroom.Stop();
                 print("win");
+                playerUI.SendMessage("WinText", SendMessageOptions.DontRequireReceiver);
                 //win
             }
         }
 
-        playerUI.SendMessage("SetGasPercent", gasPercent);
+        if (alive)
+        {
+            playerUI.SendMessage("SetGasPercent", gasPercent);
+
+        }
 
 
         //////////////////////////////////////
@@ -309,7 +318,7 @@ public class PlayerCar : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Car") && isInvincible == false)
+        if (other.gameObject.CompareTag("Car") && isInvincible == false && alive)
         {
             penalty += 25;
             gasTime += 10f;
@@ -338,31 +347,38 @@ public class PlayerCar : MonoBehaviour
                 alive = false;
                 //Instantiate(fire, this.transform);
                 fire.SetActive(true);
+                playerUI.SendMessage("LoseText", SendMessageOptions.DontRequireReceiver);
+
+
             }
         }
     }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
+        if (alive)
+        {
             if (other.gameObject.CompareTag("PotHole"))
             {
                 penalty += 5;
                 gasTime += 5f;
-                movespeed-=3f;
+                movespeed -= 3f;
                 //destroyer.SendMessage("SlowDown", 1);
             }
             if (other.gameObject.CompareTag("Oil Spill"))
             {
-                    penalty += 5;
-                    gasTime += 5f;
-                    movespeed -= 2f;
-                    //print("hit");
-                    vroom.Stop();
-                    InControl=false;
-                    spinOutTime = time;
-                    spinOutTimeMarker = spinOutTime+1f;
-                    animator.Play("Spinout");
+                penalty += 5;
+                gasTime += 5f;
+                movespeed -= 2f;
+                //print("hit");
+                vroom.Stop();
+                InControl = false;
+                spinOutTime = time;
+                spinOutTimeMarker = spinOutTime + 1f;
+                animator.Play("Spinout");
             }
+        }
+           
 
             
               

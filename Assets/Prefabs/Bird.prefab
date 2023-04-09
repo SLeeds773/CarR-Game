@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7775945283693784285}
   - component: {fileID: 6468115354337954027}
   - component: {fileID: -4608542272062915846}
+  - component: {fileID: 4516608228722984811}
   m_Layer: 0
   m_Name: Bird
   m_TagString: Untagged
@@ -133,3 +134,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d815a6f2c1f0e4148a4872ad51bea8c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &4516608228722984811
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8746496709309763975}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.96, y: 0.96}
+    newSize: {x: 0.96, y: 0.96}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.96, y: 0.96}
+  m_EdgeRadius: 0

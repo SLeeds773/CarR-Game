@@ -6,6 +6,7 @@ public class PlayerCar : MonoBehaviour
 {
     public bool alive;
     public GameObject destroyer;
+    public GameObject playerUI;
     
     public new Camera camera;
     public Animator animator;
@@ -20,7 +21,8 @@ public class PlayerCar : MonoBehaviour
 
     public float time;
     public float gas;
-    //public float penalty;
+    public float gasTime;
+    public double penalty;
     public float gasPercent;
     public bool InControl;
     public float spinOutTime;
@@ -63,13 +65,19 @@ public class PlayerCar : MonoBehaviour
     public void Update()
     {
         time +=Time.deltaTime;
+        gasTime += Time.deltaTime;
         //animator.SetFloat("Health", Health);
 
         //gas percent used for meter, getting hit lowers gas (adds to time)
         //change all time to gas
 
-        gasPercent = gas / time;
-        print(gasPercent);
+        gasPercent = gasTime / gas;
+
+
+
+        ////////////////////////////
+        ///Spin Out
+        ////////////////////////////
 
         if(InControl==false)
         {
@@ -81,7 +89,7 @@ public class PlayerCar : MonoBehaviour
                 InControl=true;
                 spinOutTime=0;
                 spinOutTimeMarker=0;
-                if(Health == 5)
+                if(Health >= 5)
                 {
                     animator.Play("Driving");
                 }
@@ -96,6 +104,11 @@ public class PlayerCar : MonoBehaviour
                 }
             }
         }
+
+        
+        /////////////////////////////
+        ///Song Changer
+        /////////////////////////////
 
         if (songtimer >= songCount && song1Change == 0)
         {
@@ -115,31 +128,37 @@ public class PlayerCar : MonoBehaviour
             song1Change = 2;
         }
 
-        //print(InControl);
+        
 
-
-        if (time >= 20f && gear == 0)
+        /////////////////////////////
+        ///Speed Up
+        /////////////////////////////
+        if (gasPercent > .05 && gear == 0)
         {
             speedUp();
         }
-        if(time >= 40f && gear == 1){
+        if(gasPercent > .1 && gear == 1){
             speedUp();
         }
-        if(time >= 60f && gear == 2)
+        if(gasPercent > .15 && gear == 2)
         {
             speedUp();
-        }if(time >= 80f && gear == 3)
+        }if(gasPercent > .25 && gear == 3)
         {
             speedUp();
-        }if(time >= 100f && gear == 4)
+        }if(gasPercent > .4 && gear == 4)
         {
             speedUp();
-        }if(time >= 120f && gear == 5)
+        }if(gasPercent > .5 && gear == 5)
         {
             speedUp();
         }
 
         
+        //////////////////////////////
+        ///Movement enabler
+        //////////////////////////////
+
         if(alive == true)
         {
         mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
@@ -155,49 +174,77 @@ public class PlayerCar : MonoBehaviour
           
       
 
-
+        ////////////////////////////
+        ///Invincibility
+        ////////////////////////////
         if (isInvincible)
         {
-
+            iFrames += Time.deltaTime;
+            if(iFrames >= iFrameMarker)
+            {
+                isInvincible = false;
+            }
         }
 
-
-        if(time >= 160f && movespeed >= 60)
+        /////////////////////////////
+        ///Slow Down and Win
+        /////////////////////////////
+        if(gasPercent > .6 && movespeed >= 60)
         {
             movespeed -= 10;
         }
-        if(time >= 180f && movespeed >= 50)
+        if(gasPercent > .7 && movespeed >= 50)
         {
             movespeed -= 10;
         }
-        if(time >= 180f && movespeed >= 40)
+        if(gasPercent > .75 && movespeed >= 40)
         {
             movespeed -= 10;
         }
-        if(time >= 180f && movespeed >= 30)
+        if(gasPercent > .8 && movespeed >= 30)
         {
             movespeed -= 10;
         }
-        if(time >= 180f && movespeed >= 20)
+        if(gasPercent > .9 && movespeed >= 20)
         {
             movespeed -= 10;
         }
-        if(time >= 180f && movespeed >= 10)
+        if(gasPercent > .99 && movespeed >= 10)
         {
-            movespeed -= 10;
+            if(movespeed > 0)
+            {
+                movespeed = 0;
+            }
             if (alive)
             {
                 //win
             }
         }
 
-            
+        playerUI.SendMessage("SetGasPercent", gasPercent);
+
+
+        //////////////////////////////////////
+        ///End of Update()
+        //////////////////////////////////////
     }
        
     public void FixedUpdate()
     {
        
 
+    }
+
+    public void GetGasPercent()
+    {
+        playerUI.SendMessage("SetGasPercent", gasPercent);
+        print("player gaspercent " + gasPercent);
+    }
+
+    public void GetPenalty()
+    {
+        playerUI.SendMessage("SetPenalty", penalty);
+        //print("player penalty = " + penalty);
     }
 
     public void speedUp()
@@ -213,11 +260,19 @@ public class PlayerCar : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Car"))
+        if (other.gameObject.CompareTag("Car") && isInvincible == false)
         {
-
+            penalty += 25;
+            gasTime += 10f;
             Health -= 1;
-            print("ow");
+            //print("ow");
+            isInvincible = true;
+            iFrameMarker = time + 1.5f;
+            iFrames = time;
+            if(movespeed > 15)
+            {
+                movespeed -= 5;
+            }
             if (Health <= 4)
             {
                 animator.Play("Driving hurt 1");
@@ -242,13 +297,17 @@ public class PlayerCar : MonoBehaviour
     {
             if (other.gameObject.CompareTag("PotHole"))
             {
-                movespeed-=1;
+                penalty += 5;
+                gasTime += 5f;
+                movespeed-=3;
                 //destroyer.SendMessage("SlowDown", 1);
             }
             if (other.gameObject.CompareTag("Oil Spill"))
-            { 
-                
-                    print("hit");
+            {
+                    penalty += 5;
+                    gasTime += 5f;
+                    movespeed -= 2;
+                    //print("hit");
                     vroom.Stop();
                     InControl=false;
                     spinOutTime = time;

@@ -15,6 +15,10 @@ public class GameUI : MonoBehaviour
     public float gasPercent;
     public Image gasMeter;
 
+    public GameObject loseScreen;
+    public GameObject winScreen;
+    public GameObject loader;
+
 
     // Start is called before the first frame update
     void Start()
@@ -42,5 +46,17 @@ public class GameUI : MonoBehaviour
     public void SetGasPercent(float percent)
     {
         gasPercent = percent;
+    }
+
+    public void WinText()
+    {
+        winScreen.SetActive(true);
+    }
+
+
+    public void LoseText()
+    {
+        loseScreen.SetActive(true);
+        print("lose text");
     }
 }

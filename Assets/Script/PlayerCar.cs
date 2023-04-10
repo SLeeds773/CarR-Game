@@ -74,7 +74,12 @@ public class PlayerCar : MonoBehaviour
         //change all time to gas
 
         gasPercent = gasTime / gas;
+        
+        if (alive)
+        {
+            playerUI.SendMessage("SetGasPercent", gasPercent);
 
+        }
 
 
         ////////////////////////////
@@ -273,11 +278,7 @@ public class PlayerCar : MonoBehaviour
             }
         }
 
-        if (alive)
-        {
-            playerUI.SendMessage("SetGasPercent", gasPercent);
-
-        }
+        
 
 
         //////////////////////////////////////

@@ -38,7 +38,7 @@ public class GameUI : MonoBehaviour
     void Update()
     {
         player.SendMessage("GetPenalty", SendMessageOptions.DontRequireReceiver);
-        score = Math.Round(player.transform.position.y) - penalty;
+        score = (Math.Round(player.transform.position.y) *10)- penalty;
         txtscore.text = "Score: "+ score.ToString();
         //SetHealth();
         HealthUI();

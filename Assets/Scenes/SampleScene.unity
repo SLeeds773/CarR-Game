@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -492, y: 296}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -490, y: -73.4}
+  m_SizeDelta: {x: 125, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &146037972
 MonoBehaviour:
@@ -2722,7 +2722,7 @@ GameObject:
   - component: {fileID: 1319281228}
   - component: {fileID: 1319281227}
   m_Layer: 5
-  m_Name: Fuel Bar Background
+  m_Name: Fuel Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2745,7 +2745,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -489, y: -73}
+  m_AnchoredPosition: {x: -489, y: 19}
   m_SizeDelta: {x: 81.38, y: 477.5851}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1319281227
@@ -2761,7 +2761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.745283, g: 0.25256416, b: 0.19335175, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4039,7 +4039,7 @@ GameObject:
   - component: {fileID: 2131280369}
   - component: {fileID: 2131280368}
   m_Layer: 5
-  m_Name: Fuel Bar
+  m_Name: Fuel Bar Background for real
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4062,7 +4062,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -489, y: -73}
+  m_AnchoredPosition: {x: -489, y: 19}
   m_SizeDelta: {x: 81.38, y: 477.5851}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2131280368

@@ -55,7 +55,7 @@ public class GameUI : MonoBehaviour
 
     public void SetGasPercent(float percent)
     {
-        gasPercent = percent;
+        gasPercent = 1-percent;
     }
 
     public void WinText()

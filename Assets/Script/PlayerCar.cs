@@ -325,7 +325,7 @@ public class PlayerCar : MonoBehaviour
             isInvincible = true;
             iFrameMarker = time + 1.5f;
             iFrames = time;
-             playerUI.SendMessage("SetHealth", SendMessageOptions.DontRequireReceiver);
+             playerUI.SendMessage("SetHealth");
 
             if(movespeed > 15f)
             {

@@ -1748,11 +1748,6 @@ RectTransform:
   m_Father: {fileID: 1409615396}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 538, y: -2080}
@@ -2644,10 +2639,6 @@ Sprite:
   m_PhysicsShape: []
   m_Bones: []
   m_SpriteID: 
-<<<<<<< Updated upstream
-=======
->>>>>>> 54cad592dcbb733b019e4161161ab708e5978cb2
->>>>>>> Stashed changes
 --- !u!1 &1250631559
 GameObject:
   m_ObjectHideFlags: 0
@@ -4164,11 +4155,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 737695362, guid: 013a2416c0e3e7647ba957ba5e4b6243, type: 3}
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
       propertyPath: gas
       value: 200
       objectReference: {fileID: 0}
@@ -4181,19 +4167,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 897423423}
     - target: {fileID: 737695362, guid: 013a2416c0e3e7647ba957ba5e4b6243, type: 3}
->>>>>>> 54cad592dcbb733b019e4161161ab708e5978cb2
       propertyPath: camera
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 737695362, guid: 013a2416c0e3e7647ba957ba5e4b6243, type: 3}
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-      propertyPath: destroyer
-      value: 
-      objectReference: {fileID: 705409085}
-=======
->>>>>>> Stashed changes
       propertyPath: loader
       value: 
       objectReference: {fileID: 679793574}
@@ -4289,7 +4266,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
->>>>>>> 54cad592dcbb733b019e4161161ab708e5978cb2
     - target: {fileID: 3337363498076693357, guid: 013a2416c0e3e7647ba957ba5e4b6243, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -4334,11 +4310,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 179.062
       objectReference: {fileID: 0}
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
     - target: {fileID: 3530117529940516450, guid: 013a2416c0e3e7647ba957ba5e4b6243, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -4387,17 +4358,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
-<<<<<<< Updated upstream
-=======
->>>>>>> 54cad592dcbb733b019e4161161ab708e5978cb2
->>>>>>> Stashed changes
     - target: {fileID: 7694996969856856856, guid: 013a2416c0e3e7647ba957ba5e4b6243, type: 3}
       propertyPath: m_Name
       value: Player Car
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-    m_RemovedComponents: []
-=======
     - target: {fileID: 8174881720514430732, guid: 013a2416c0e3e7647ba957ba5e4b6243, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -4413,7 +4377,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2232438222631001478, guid: 013a2416c0e3e7647ba957ba5e4b6243, type: 3}
     - {fileID: 5545198862327062148, guid: 013a2416c0e3e7647ba957ba5e4b6243, type: 3}
->>>>>>> 54cad592dcbb733b019e4161161ab708e5978cb2
   m_SourcePrefab: {fileID: 100100000, guid: 013a2416c0e3e7647ba957ba5e4b6243, type: 3}
 --- !u!1001 &6253612032868088072
 PrefabInstance:
